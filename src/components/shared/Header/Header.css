@@ -1,0 +1,67 @@
+
+.header
+{
+    background-color: black;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 5px !important ;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.left-bar
+{
+    display: flex;
+    align-items: center;
+    width: 10%;
+}
+
+.bi-shop-window
+{
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.title
+{
+    position: relative;
+    top: 5px;
+}
+
+.right-bar
+{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 10%;
+    margin-right: 20px;
+}
+
+.cart-container
+{
+    position: relative;
+    margin-right: 20px;
+}
+
+.num
+{
+    position: absolute;
+    left: 11px;
+    top: 11px;
+    font-size: smaller;
+}
+
+.bi-cart
+{
+    position: relative;
+}
+
+.profile-container{
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 40px;
+    margin-left: 20px;
+}
