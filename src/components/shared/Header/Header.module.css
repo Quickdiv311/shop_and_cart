@@ -12,17 +12,11 @@
     z-index: 999;
 }
 
-.left-bar
+.leftBar
 {
     display: flex;
     align-items: center;
     width: 10%;
-}
-
-.bi-shop-window
-{
-    margin-right: 20px;
-    margin-left: 10px;
 }
 
 .title
@@ -31,7 +25,7 @@
     top: 5px;
 }
 
-.right-bar
+.rightBar
 {
     display: flex;
     align-items: center;
@@ -40,7 +34,7 @@
     margin-right: 20px;
 }
 
-.cart-container
+.cartContainer
 {
     position: relative;
     margin-right: 20px;
@@ -50,16 +44,11 @@
 {
     position: absolute;
     left: 11px;
-    top: 11px;
-    font-size: smaller;
+    top: 14px;
+    font-size: 10px;
 }
 
-.bi-cart
-{
-    position: relative;
-}
-
-.profile-container{
+.profileContainer{
     border: 1px solid white;
     border-radius: 50%;
     width: 40px;
