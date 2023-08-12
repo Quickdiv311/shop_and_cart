@@ -1,0 +1,26 @@
+.card
+{
+    margin-bottom: 40px;
+    border: 1px solid lightgray;
+    padding: 20px 0px;
+    width: 300px;
+}
+
+.card:first-child
+{
+    margin-left: 120px;
+}
+
+.cardImage
+{
+    height: 200px;
+    width: 200px;
+}
+
+.container
+{
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
