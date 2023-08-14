@@ -10,7 +10,11 @@ const Home = () => {
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
     .then(res=>res.json())
-    .then(res=>setProducts(res))
+    .then(res=>
+      {
+        res.forEach((i) => i.quantity = 1);
+        setProducts(res);
+      })
   },[])
 
   return (

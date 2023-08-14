@@ -1,0 +1,75 @@
+.sign-in-container
+{
+    margin: 5% auto;
+    background-color: rgba(204, 195, 195, 0.562);
+    width: 400px;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 5px 5px #888888;
+}
+
+
+.facebook-img
+{
+    width: 20px; margin: 5px 10px; height: 20px;
+}
+
+.signin-btn-pair
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.facebook-btn
+{
+   margin: 10px auto;
+   min-width: 350px;
+}
+
+.google-btn
+{
+    background-color: white;
+    margin: 5px auto;
+    margin-bottom: 15px;
+   min-width: 350px;
+}
+
+.google-btn:hover{
+    background-color: aquamarine;
+    color: black;
+}
+
+.sign-button
+{
+    min-width: 100px;
+ }
+
+ .btn-container
+ {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+ }
+
+.google-img
+{
+    width: 20px; margin: 5px; height: 20px;
+}
+
+.email-btn
+{
+    background-color:black;color: white; height: 44px
+}
+
+.signup-link-text
+{
+    color: black;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.signup-link
+{
+    margin-bottom: 20px;
+}
