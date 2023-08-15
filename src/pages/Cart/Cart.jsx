@@ -5,25 +5,27 @@ import Header from '../../components/shared/Header/Header';
 
 const Cart = () => {
 
-  const [products, setProducts] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
+  const [cartItemCount, setCartItemCount] = useState(0);
   
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-    .then(res=>res.json())
-    .then(res=>{
-      res = res.filter(i => i.id < 5);
-      res.forEach(i => i.quantity = 1);
-      updateTotal(res);
-      setProducts(res)})
-  },[])
+   useEffect(() => {
+        let cart = localStorage.getItem("cart");
+         if(cart)
+         {
+          let items = JSON.parse(cart);
+          updateTotal(items);
+          setCartItems(items);
+         }
+   },[]);
 
-  function updatePrice(item, quantity)
+  function updateItemQuantity(id,quantity)
   {
-    let items = products;
-    let itemIndex = products.findIndex(i => i.id === item.id);
-    items[itemIndex].quantity = quantity;
-    setProducts(items);
+    let items = cartItems;
+    let item = items.find(i => i.id === id);
+    item.quantity = quantity;
+    localStorage.setItem("cart",JSON.stringify(items));
+    setCartItems(items);
     updateTotal(items);
   }
 
@@ -32,24 +34,41 @@ const Cart = () => {
     let sum = 0;
     res.forEach((i) => sum = sum + Number(Math.floor(i.price * 80) * Number(i.quantity)));
     setTotal(sum);
+
+    if(total==0)
+    {
+       notifyCart();
+    }
   }
 
   function deleteId(id)
   {
-     let items = products;
+     let items = cartItems;
      let itemIndex = items.findIndex(i => i.id === id);
      items.splice(itemIndex,1);
-     setProducts(items);
+    localStorage.setItem("cart",JSON.stringify(items));
+     setCartItems(items);
      updateTotal(items);
+  }
+
+  function notifyCart()
+  {
+    let cart = localStorage.getItem('cart');
+    let items = [];
+    if(cart)
+    {
+       items = JSON.parse(cart);
+    }
+    setCartItemCount(items.length);
   }
 
   return (
     <div className={styles.main}>
-      <Header/>
+      <Header cartItemCount={cartItemCount}/>
         <div className="list">
         {
-            products.map((product) => (
-               <CartItem update={updatePrice} deleteItem={deleteId} item={product}/>
+            cartItems.map((product) => (
+               <CartItem update={updateItemQuantity} deleteItem={deleteId} item={product} notify={notifyCart}/>
             ))
           }
         </div>

@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({itemCount,cartItemCount}) => {
 
   const navigate = useNavigate();
+  const [count, setCount] = useState(0);
   
+  useEffect(() => {
+    let cart = localStorage.getItem("cart");
+    if(cart)
+    {
+      let items = JSON.parse(cart);
+      setCount(items.length);
+    }
+  },[itemCount,cartItemCount]);
 
   return (
     <div className={styles.header}>
@@ -19,7 +28,7 @@ const Header = () => {
 
         <div className={styles.rightBar}>
             <span className={styles.cartContainer} onClick={() => navigate('/cart')}>
-                <span className={styles.num}>1</span>
+                <span className={styles.num}>{count}</span>
                 <i class="bi bi-cart" style={{fontSize: "30px"}}></i>
             </span>
             <a className={styles.profile} href='/signin' style={{color: 'white', textDecoration: 'none'}}>Sign In</a>

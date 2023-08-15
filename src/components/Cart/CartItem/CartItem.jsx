@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CartItem.module.css';
 
-const CartItem = ({item,update,deleteItem}) => {
+const CartItem = ({item,update,deleteItem,notify}) => {
 
   const [quantity, setQuantity] = useState(Number(item.quantity));
   const [price, setPrice] = useState(Math.floor(item.price * 80));
@@ -15,12 +15,13 @@ const CartItem = ({item,update,deleteItem}) => {
   {
      setQuantity(newQuantity);
      setPrice(newQuantity * Math.floor(item.price * 80));
-     update(item, newQuantity);
+     update(item.id, newQuantity);
   }
 
   function deleteCartItem()
   {
      deleteItem(item.id);
+     notify();
   }
 
   return (
