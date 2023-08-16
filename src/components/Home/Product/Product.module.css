@@ -5,6 +5,7 @@
     padding: 20px 0px;
     width: 300px;
     text-align: center;
+    background-color: white;
 }
 
 .card:first-child

@@ -16,6 +16,14 @@ const Header = ({itemCount,cartItemCount}) => {
     }
   },[itemCount,cartItemCount]);
 
+  function handleCartClick()
+  {
+    if(count > 0)
+    {
+     navigate('/cart');
+    }
+  }
+
   return (
     <div className={styles.header}>
 
@@ -27,7 +35,7 @@ const Header = ({itemCount,cartItemCount}) => {
         </div>
 
         <div className={styles.rightBar}>
-            <span className={styles.cartContainer} onClick={() => navigate('/cart')}>
+            <span className={styles.cartContainer} onClick={handleCartClick}>
                 <span className={styles.num}>{count}</span>
                 <i class="bi bi-cart" style={{fontSize: "30px"}}></i>
             </span>

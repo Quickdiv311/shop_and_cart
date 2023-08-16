@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import styles from './Cart.module.css';
 import CartItem from '../../components/Cart/CartItem/CartItem';
 import Header from '../../components/shared/Header/Header';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
   const [cartItemCount, setCartItemCount] = useState(0);
+  const navigate = useNavigate();
   
    useEffect(() => {
         let cart = localStorage.getItem("cart");
@@ -34,11 +36,6 @@ const Cart = () => {
     let sum = 0;
     res.forEach((i) => sum = sum + Number(Math.floor(i.price * 80) * Number(i.quantity)));
     setTotal(sum);
-
-    if(total==0)
-    {
-       notifyCart();
-    }
   }
 
   function deleteId(id)
@@ -46,6 +43,10 @@ const Cart = () => {
      let items = cartItems;
      let itemIndex = items.findIndex(i => i.id === id);
      items.splice(itemIndex,1);
+     if(items.length==0)
+     {
+       navigate('/');
+     }
     localStorage.setItem("cart",JSON.stringify(items));
      setCartItems(items);
      updateTotal(items);

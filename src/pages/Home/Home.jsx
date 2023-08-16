@@ -36,7 +36,7 @@ const Home = () => {
       <div className="row">
          {
           products.map((product,i)=>(
-            <div className="col-3">
+            <div className="col-md-3 col-sm-12">
               <Product product={product} index={i} notify={notifyHome}/>
             </div>
           ))
