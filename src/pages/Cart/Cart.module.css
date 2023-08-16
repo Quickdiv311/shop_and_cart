@@ -1,5 +1,11 @@
 .main
 {
     background-color: #4FC3F7;
-    height: 100vw;
+    min-height:1025px;
+    padding-bottom: 20px;
+}
+
+.total
+{
+  text-align: end;
 }

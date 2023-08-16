@@ -6,5 +6,6 @@
 .main
 {
     background-color: #4FC3F7;
-    height: auto;
+    min-height:100vw;
+    padding-bottom: 0;
 }

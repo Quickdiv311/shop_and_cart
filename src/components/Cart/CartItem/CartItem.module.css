@@ -5,14 +5,15 @@
     border-radius: 10px;
     height: 70px;
     margin: 20px 120px;
-    justify-content: space-between;
-    background-color: white;
+    background-color: black;
+    color: white;
 }
 
 .container1
 {
     display: flex;
-    width: 50%;
+    padding-right: 30px;
+    width: 85%;
 }
 
 .sub
@@ -22,6 +23,32 @@
     flex-direction: column;
     margin: 5px 10px;
     width: fit-content;
+}
+
+.subImage
+{
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 10px;
+    width: fit-content;
+    background-color: white;
+}
+
+.subTitle
+{
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.subPrice
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
 }
 
 img
@@ -34,7 +61,7 @@ img
 {
     display: flex;
     justify-content: flex-end;
-    width: 50%;
+    width: 15%;
 }
 
 .quantity
@@ -55,9 +82,15 @@ span
 
 h4
 {
-    display: flex;
-    margin-top: auto;
 }
+
+@media screen and (max-width: 500px) {
+    .container
+    {
+
+    }
+}
+
 
 
 

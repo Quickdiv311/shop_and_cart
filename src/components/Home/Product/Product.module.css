@@ -1,8 +1,7 @@
 .card
 {
     margin-bottom: 40px;
-    border: 1px solid lightgray;
-    padding: 20px 0px;
+    padding-top: 20px;
     width: 300px;
     text-align: center;
     background-color: white;
@@ -24,6 +23,13 @@
     width: 100%;
     border-bottom: 1px solid lightgrey;
     padding-bottom: 10px;
-    margin-bottom: 10px;
+}
+
+.cardBody
+{
+    background-color: black;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 

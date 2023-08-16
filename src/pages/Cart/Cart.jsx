@@ -74,8 +74,8 @@ const Cart = () => {
           }
         </div>
 
-        <div>
-          <h3 className='float-end' style={{marginRight: '100px'}}>Total: {total}</h3>
+        <div className={styles.total}>
+          <h3 style={{marginRight: '100px'}}>Total: {total}</h3>
         </div>
     </div>
   );
