@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './Product.module.css';
+import AppContext from '../../../context';
 
-const Product = ({product,notify}) => {
+const Product = ({product}) => {
 
   let stars = [];
   let half = product.rating.rate%1;
@@ -11,18 +12,11 @@ const Product = ({product,notify}) => {
     stars[i] = 1;
   }
 
+  const {dispatcherEvents} = useContext(AppContext);
+
   function handleAddtoCart()
   {
-     let cart = localStorage.getItem("cart");
-     let cartItems = [];
-     if(cart)
-     {
-      cartItems = JSON.parse(cart);
-     }
-     product.quantity = 1;
-     cartItems.push(product);
-     localStorage.setItem("cart", JSON.stringify(cartItems)); 
-     notify();
+     dispatcherEvents("ADD_ITEM",product);
   }
 
 
@@ -33,7 +27,7 @@ const Product = ({product,notify}) => {
      </div>
      <div className={styles.cardBody}>
      <h5 className={styles.cardTitle}>{product.title.length<20?product.title:product.title.slice(0,20)+"..."}</h5>
-     <p className={styles.cardText}>Price: &#8377;{Math.floor(product.price*80)}</p>
+     <p className={styles.cardText}>Price: &#8377;{product.price}</p>
      <p className={styles.starText}>
       <span>
       {

@@ -1,26 +1,36 @@
+import { useContext } from "react";
 import Header from "../../components/shared/Header/Header";
 import './SignIn.css';
+import AppContext from "../../context";
+import { useNavigate } from "react-router-dom";
 
 function SignIn(){
+   
+    const navigate = useNavigate();
+    const {dispatcherEvents} = useContext(AppContext);
 
+    function handleSignIn()
+    {
+       dispatcherEvents("UPDATE_LOGGED", true);
+       navigate('/');
+    }
 
     return(
-        <div>
-            <Header/>
+        <div className="sign-in-wrapper">
             <div className="sign-in-container">
-                <h3 style={{color: 'black'}}>Login Page</h3>
-                <hr style={{color: 'black'}}/>
+                <h3 style={{color: 'white'}}>Please Login First !!!</h3>
+                <hr style={{color: 'white'}}/>
                 <form action="">
                 <input type="text" className="form-control mb-3" placeholder="User Name"/>
 
                 <input type="text" className="form-control mb-3" placeholder="Password"/>
                 <div className="btn-container">
-                <button className="btn btn-success sign-button" type="submit">Sign In</button>
+                <button className="btn btn-success sign-button" onClick={handleSignIn}>Sign In</button>
                 </div>
 
                 <div className="signup-link">
                     <span className="signup-link-text">Don't have an account? </span>
-                    <a href="/signup" style={{textDecoration: 'none'}}>SignUp</a>
+                    <a href="/signup" style={{textDecoration: 'none', fontWeight: 'bolder'}}>SignUp</a>
                 </div>
 
                 </form>

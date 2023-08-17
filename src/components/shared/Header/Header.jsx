@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { useNavigate } from 'react-router-dom';
+import AppContext from '../../../context';
 
-const Header = ({itemCount,cartItemCount}) => {
+const Header = () => {
 
   const navigate = useNavigate();
-  const [count, setCount] = useState(0);
-  
-  useEffect(() => {
-    let cart = localStorage.getItem("cart");
-    if(cart)
-    {
-      let items = JSON.parse(cart);
-      setCount(items.length);
-    }
-  },[itemCount,cartItemCount]);
+  const {cartItems,logged,dispatcherEvents} = useContext(AppContext);
 
   function handleCartClick()
   {
-    if(count > 0)
+    if(cartItems.length > 0)
     {
      window.scrollTo(0,0);
      navigate('/cart');
     }
+  }
+
+  function handleLogout()
+  {
+     dispatcherEvents("UPDATE_LOGGED", false);
   }
 
   return (
@@ -37,16 +34,20 @@ const Header = ({itemCount,cartItemCount}) => {
 
         <div className={styles.rightBar}>
             <span className={styles.cartContainer} onClick={handleCartClick}>
-                <span className={styles.num}>{count}</span>
+                <span className={styles.num}>{cartItems.length}</span>
                 <i class="bi bi-cart" style={{fontSize: "30px"}}></i>
             </span>
-            <a className={styles.profile} href='/signin' style={{color: 'white', textDecoration: 'none'}}>Sign In</a>
-            <span className={styles.profileContainer}>
-                <i class="bi bi-person-fill" style={{fontSize: "25px",position: 'relative', left: '0px'}}></i>
-            </span>
+            {
+               logged &&
+              <div className={styles.logged}>
+               <h6 className={styles.signOut} onClick={handleLogout}>Logout</h6>
+               <span className={styles.profileContainer}>
+                <i class="bi bi-person-fill" style={{fontSize: "25px"}}></i>
+               </span>
+              </div>
+            }
+              </div>
         </div>
-
-    </div>
   );
 }
 

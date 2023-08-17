@@ -1,11 +1,19 @@
 .sign-in-container
 {
-    margin: 5% auto;
-    background-color: rgba(204, 195, 195, 0.562);
+    margin: 0 auto;
+    background-color: black;
     width: 400px;
     color: white;
     padding: 10px 20px;
-    box-shadow: 5px 5px #888888;
+}
+
+.sign-in-wrapper
+{
+    position: absolute;
+    background-color:  rgba(189,189,189,0.5);
+    height: 100vh;
+    width: 100vw;
+    padding-top: 150px;
 }
 
 
@@ -64,7 +72,7 @@
 
 .signup-link-text
 {
-    color: black;
+    color: white;
     margin-left: 15px;
     margin-right: 5px;
 }

@@ -32,13 +32,11 @@
     align-items: center;
     justify-content: end;
     width: 10%;
-    margin-right: 20px;
 }
 
 .cartContainer
 {
     position: relative;
-    margin-right: 30px;
     cursor: pointer;
 }
 
@@ -54,10 +52,35 @@
     border: 1px solid white;
     border-radius: 50%;
     width: 40px;
-    margin-left: 20px;
+    position: relative;
+    left: -25px;
 }
+
+.signIn{
+    position: relative;
+    top: 5px;
+    left: -40px;
+    cursor: pointer;
+}
+
+.signOut{
+    margin-right: 40px;
+    margin-top: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
 
 h5
 {
     cursor: pointer;
+}
+
+
+.logged
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
