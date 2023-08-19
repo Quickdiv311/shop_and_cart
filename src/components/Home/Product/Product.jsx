@@ -7,10 +7,10 @@ const Product = ({product}) => {
 
   let dispatch = useDispatch();
 
-  let stars = [];
+  let stars = new Array(Math.floor(product.rating.rate)).fill(1);
   let half = product.rating.rate%1;
   half = half >=0.5 ? 0.5 : 0;  
-  for(let i=0;i<Math.floor(product.rating.rate);i++) stars[i] = 1;
+  
 
   function handleAddtoCart()
   {
