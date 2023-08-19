@@ -9,9 +9,10 @@ const CartItem = ({item}) => {
  
   function handleChange(newQuantity)
   {
-     item.quantity = newQuantity;
-     item.totalPrice = newQuantity * item.price;
-     dispatch(update(item));
+     let newItem = {...item};
+     newItem.quantity = newQuantity;
+     newItem.totalPrice = newQuantity * newItem.price;
+     dispatch(update(newItem));
   }
 
   function deleteCartItem()
