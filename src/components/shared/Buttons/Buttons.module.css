@@ -1,0 +1,9 @@
+.quantity
+{
+     border: 1px solid gray;
+     display: flex;
+     height: fit-content;
+     margin: auto;
+     border-radius: 10px;
+     width: 120px;
+}

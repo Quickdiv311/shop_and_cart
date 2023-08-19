@@ -3,12 +3,15 @@ import './Home.css';
 import Header from '../../components/shared/Header/Header';
 import Product from '../../components/Home/Product/Product';
 import SignIn from '../SignIn/SignIn';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginSelector } from '../../store/Reducers/loginReducer';
+import { initSelector, initialize, itemsSelector, updateInit } from '../../store/Reducers/CartReducer';
 
 const Home = () => {
 
-  const [products, setProducts] = useState([]);
+  const products = useSelector(itemsSelector);
+  const initizalized = useSelector(initSelector);
+  const dispatch = useDispatch();
   const logged = useSelector(loginSelector);
   const [visible, setVisible] = useState(false);
   
@@ -20,13 +23,18 @@ const Home = () => {
         res.forEach((i) => {
           i.price = Math.floor(i.price * 80);
           i.quantity = 1;
-          i.totalPrice = i.quantity * i.price; 
+          i.totalPrice = i.price;
+          i.added = false;
          });
-        setProducts(res);
+         if(initizalized)
+         {
+          dispatch(initialize(res));
+          dispatch(updateInit());
+         }
       })
 
       setTimeout(() => setVisible(true), 2000);
-  },[])
+  },[]);
 
   function handleLogged(value)
   {

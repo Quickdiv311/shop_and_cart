@@ -64,15 +64,6 @@ img
     width: 15%;
 }
 
-.quantity
-{
-     border: 1px solid gray;
-     display: flex;
-     height: fit-content;
-     margin: auto 10px;
-     border-radius: 10px;
-}
-
 span
 {
   margin: auto;

@@ -5,11 +5,12 @@ import Header from '../../components/shared/Header/Header';
 import AppContext from '../../context';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { cartSelector } from '../../store/Reducers/CartReducer';
+import {itemsSelector } from '../../store/Reducers/CartReducer';
 
 const Cart = () => {
 
-  const cartItems = useSelector(cartSelector);
+  const items = useSelector(itemsSelector);
+  const cartItems = items.filter(i => i.added === true);
   let [total, setTotal] = useState(0);
   const navigate = useNavigate();
 

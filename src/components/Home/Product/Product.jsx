@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Product.module.css';
-import { useDispatch } from 'react-redux';
-import { add } from '../../../store/Reducers/CartReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { add, itemsSelector } from '../../../store/Reducers/CartReducer';
+import Buttons from '../../shared/Buttons/Buttons';
 
 const Product = ({product}) => {
 
   let dispatch = useDispatch();
-
   let stars = new Array(Math.floor(product.rating.rate)).fill(1);
   let half = product.rating.rate%1;
   half = half >=0.5 ? 0.5 : 0;  
@@ -40,7 +40,11 @@ const Product = ({product}) => {
           }
       </span>
      </p>
-     <button href="#" className="btn btn-primary" onClick={handleAddtoCart}>Add to Cart</button>
+    {
+       product.added &&
+       <Buttons item={product}/>}
+    
+      {!product.added && <button href="#" className="btn btn-primary" onClick={handleAddtoCart}>Add to Cart</button>}
      </div>
 </div>
   );

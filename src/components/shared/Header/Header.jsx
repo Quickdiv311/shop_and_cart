@@ -1,14 +1,16 @@
 import React from 'react';
 import styles from './Header.module.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { cartSelector } from '../../../store/Reducers/CartReducer';
+import { itemsSelector } from '../../../store/Reducers/CartReducer';
 import { loginSelector, update } from '../../../store/Reducers/loginReducer';
 
 const Header = () => {
 
   const navigate = useNavigate();
-  const cartItems = useSelector(cartSelector);
+  const items = useSelector(itemsSelector);
+  const cartItems = items.filter(i => i.added === true);
+  console.log(cartItems);
   const logged = useSelector(loginSelector);
   const dispatch = useDispatch();
 
