@@ -1,18 +1,15 @@
-import { useContext } from "react";
-import Header from "../../components/shared/Header/Header";
+
+import { useDispatch } from 'react-redux';
 import './SignIn.css';
-import AppContext from "../../context";
-import { useNavigate } from "react-router-dom";
+import { update } from '../../store/Reducers/loginReducer';
 
 function SignIn(){
    
-    const navigate = useNavigate();
-    const {dispatcherEvents} = useContext(AppContext);
+    const dispatch = useDispatch();
 
     function handleSignIn()
     {
-       dispatcherEvents("UPDATE_LOGGED", true);
-       navigate('/');
+       dispatch(update(true));
     }
 
     return(

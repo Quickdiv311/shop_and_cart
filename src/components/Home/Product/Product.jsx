@@ -1,22 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Product.module.css';
-import AppContext from '../../../context';
+import { useDispatch } from 'react-redux';
+import { add } from '../../../store/Reducers/CartReducer';
 
 const Product = ({product}) => {
+
+  let dispatch = useDispatch();
 
   let stars = [];
   let half = product.rating.rate%1;
   half = half >=0.5 ? 0.5 : 0;  
-  for(let i=0;i<Math.floor(product.rating.rate);i++)
-  {
-    stars[i] = 1;
-  }
-
-  const {dispatcherEvents} = useContext(AppContext);
+  for(let i=0;i<Math.floor(product.rating.rate);i++) stars[i] = 1;
 
   function handleAddtoCart()
   {
-     dispatcherEvents("ADD_ITEM",product);
+    dispatch(add(product));
   }
 
 

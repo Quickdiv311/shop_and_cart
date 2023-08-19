@@ -1,13 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Cart.module.css';
 import CartItem from '../../components/Cart/CartItem/CartItem';
 import Header from '../../components/shared/Header/Header';
 import AppContext from '../../context';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { cartSelector } from '../../store/Reducers/CartReducer';
 
 const Cart = () => {
 
-  const {cartItems} = useContext(AppContext);
+  const cartItems = useSelector(cartSelector);
   let [total, setTotal] = useState(0);
   const navigate = useNavigate();
 

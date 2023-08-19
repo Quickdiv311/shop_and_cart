@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import './Home.css';
 import Header from '../../components/shared/Header/Header';
 import Product from '../../components/Home/Product/Product';
 import SignIn from '../SignIn/SignIn';
-import AppContext from '../../context';
+import { useSelector } from 'react-redux';
+import { loginSelector } from '../../store/Reducers/loginReducer';
 
 const Home = () => {
 
   const [products, setProducts] = useState([]);
-  const [itemCount, setItemCount] = useState(0);
-  const {logged} = useContext(AppContext);
+  const logged = useSelector(loginSelector);
   const [visible, setVisible] = useState(false);
   
   useEffect(() => {

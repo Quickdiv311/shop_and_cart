@@ -1,21 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import styles from './CartItem.module.css';
-import AppContext from '../../../context';
+import { useDispatch } from 'react-redux';
+import { deleteItem, update } from '../../../store/Reducers/CartReducer';
 
 const CartItem = ({item}) => {
-
-  const {dispatcherEvents} = useContext(AppContext);
-
+  
+   const dispatch = useDispatch();
+ 
   function handleChange(newQuantity)
   {
      item.quantity = newQuantity;
      item.totalPrice = newQuantity * item.price;
-     dispatcherEvents("UPDATE_ITEM",item);
+     dispatch(update(item));
   }
 
   function deleteCartItem()
   {
-   dispatcherEvents("DELETE_ITEM",item);
+     dispatch(deleteItem(item));
   }
 
   return (

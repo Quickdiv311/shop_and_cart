@@ -1,12 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import styles from './Header.module.css';
 import { useNavigate } from 'react-router-dom';
-import AppContext from '../../../context';
+import { useDispatch, useSelector } from 'react-redux';
+import { cartSelector } from '../../../store/Reducers/CartReducer';
+import { loginSelector, update } from '../../../store/Reducers/loginReducer';
 
 const Header = () => {
 
   const navigate = useNavigate();
-  const {cartItems,logged,dispatcherEvents} = useContext(AppContext);
+  const cartItems = useSelector(cartSelector);
+  const logged = useSelector(loginSelector);
+  const dispatch = useDispatch();
 
   function handleCartClick()
   {
@@ -19,7 +23,8 @@ const Header = () => {
 
   function handleLogout()
   {
-     dispatcherEvents("UPDATE_LOGGED", false);
+      dispatch(update(false));
+      navigate('/');
   }
 
   return (
