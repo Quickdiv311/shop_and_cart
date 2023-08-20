@@ -1,9 +1,12 @@
 import React from 'react';
 import styles from './CartItem.module.css';
 import Buttons from '../../shared/Buttons/Buttons';
+import { useNavigate } from 'react-router-dom';
 
 const CartItem = ({item}) => {
   
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
 

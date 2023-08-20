@@ -33,7 +33,7 @@ const Home = () => {
          }
       })
 
-      setTimeout(() => setVisible(true), 2000);
+      setTimeout(() => setVisible(true), 1000);
   },[]);
 
   function handleLogged(value)

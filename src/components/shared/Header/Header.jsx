@@ -10,7 +10,6 @@ const Header = () => {
   const navigate = useNavigate();
   const items = useSelector(itemsSelector);
   const cartItems = items.filter(i => i.added === true);
-  console.log(cartItems);
   const logged = useSelector(loginSelector);
   const dispatch = useDispatch();
 
