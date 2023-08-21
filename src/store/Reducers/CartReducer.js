@@ -22,6 +22,7 @@ const cartSlice = createSlice({
        },
        deleteItem: (state,action) => {
         let index = state.items.findIndex(i => i.id === action.payload.id);
+        state.items[index].quantity = 1;
         state.items[index].added = false;
        },
 

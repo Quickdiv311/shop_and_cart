@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './Detail.module.css';
-import { itemsSelector, update } from '../../store/Reducers/CartReducer';
+import { itemsSelector, update, add } from '../../store/Reducers/CartReducer';
 import Header from '../../components/shared/Header/Header';
 
 const Detail = () => {
@@ -16,16 +16,9 @@ const Detail = () => {
   let half = item.rating.rate%1;
   half = half >= 0.5 ? true : false;
   let options = new Array(99);
-  for(let i=1;i<=99;i++)
+  for(let i=1;i<=10;i++)
   {
     options[i-1] = i; 
-  }
-
-  function handleSelect(value)
-  {
-    let newItem = {...item};
-    newItem.quantity = value;
-    dispatch(update(newItem));
   }
 
   return (
@@ -56,15 +49,22 @@ const Detail = () => {
             <div className={styles.add}>
                 <span className={styles.quantity}>
                     <h5 style={{marginRight: '10px'}}>Quantity:</h5>
-                    <select className='form-select' style={{width: '80px'}}>
+                    <select className='form-select' style={{width: '80px'}} value={item.quantity} onInput={e => {
+                     let obj = {...item};
+                     obj.quantity = Number(e.target.value);
+                     dispatch(update(obj))}}>
                         {
                             options.map((i) => (
-                                <option value="">{i}</option>
+                                <option value={i.quantity}>{i}</option>
                             ))
                         }
                     </select>
                 </span>
-                <button className="btn btn-primary" onClick={() => navigate('/cart')}>Add to Cart</button>
+                { item.added ? 
+                <button className="btn btn-primary" onClick={() => {navigate('/cart')}}>update Item</button>
+                :
+                <button className="btn btn-primary" onClick={() => {dispatch(add(item));navigate('/cart')}}>Add to Cart</button>
+                }
             </div>
         </div>
     </div>
