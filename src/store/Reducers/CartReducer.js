@@ -5,7 +5,8 @@ const cartSlice = createSlice({
     name: "cart",
     initialState: {
         items: [],
-        initialized: true
+        initialized: true,
+        searchInput: ""
     },
     reducers: {
        initialize: (state,action) => {
@@ -28,12 +29,18 @@ const cartSlice = createSlice({
 
        updateInit: (state,action) => {
           state.initialized = false;
+       },
+
+       updateSearch: (state, action) => {
+         state.searchInput = action.payload;
        }
     }
 })
 
 export const cartReducer = cartSlice.reducer;
-export const {add,update,deleteItem,initialize,updateInit} = cartSlice.actions;
+export const {add,update,deleteItem,initialize,updateInit,updateSearch} = cartSlice.actions;
 export const itemsSelector = (state) => state.cartReducer.items;
 export const initSelector = (state) => state.cartReducer.initialized;
+export const searchSelector = (state) => state.cartReducer.searchInput;
+
 

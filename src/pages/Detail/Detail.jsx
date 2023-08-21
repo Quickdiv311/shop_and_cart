@@ -53,22 +53,21 @@ const Detail = () => {
                      let obj = {...item};
                      obj.quantity = Number(e.target.value);
                      dispatch(update(obj))
-                     if(obj.added)
-                     {
-                        navigate('/cart');
-                     }
                      }}>
                         {
                             options.map((i) => (
-                                <option value={i.quantity}>{i}</option>
+                                <option value={i}>{i}</option>
                             ))
                         }
                     </select>
                 </span>
                 { item.added ? 
-                 <button className="btn btn-danger" onClick={() => {dispatch(deleteItem(item))}}>Delete Item</button>
+                 <div>
+                    <button className="btn btn-danger" onClick={() => {dispatch(deleteItem(item))}} style={{marginRight: '20px'}}><b>Delete Item</b></button>
+                    <button className="btn btn-warning" onClick={() => {navigate('/cart')}}><b>Go To Cart</b></button>
+                 </div>
                 :
-                <button className="btn btn-primary" onClick={() => {dispatch(add(item))}}>Add to Cart</button>
+                <button className="btn btn-primary" onClick={() => {dispatch(add(item))}}><b>Add to Cart</b></button>
                 }
             </div>
         </div>

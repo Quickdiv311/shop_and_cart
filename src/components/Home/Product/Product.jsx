@@ -46,7 +46,7 @@ const Product = ({product}) => {
        product.added &&
        <Buttons item={product}/>}
     
-      {!product.added && <button href="#" className="btn btn-primary" onClick={handleAddtoCart}>Add to Cart</button>}
+      {!product.added && <button href="#" className="btn btn-primary" onClick={handleAddtoCart}><b>Add to Cart</b></button>}
      </div>
 </div>
   );

@@ -5,15 +5,23 @@ import Product from '../../components/Home/Product/Product';
 import SignIn from '../SignIn/SignIn';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginSelector } from '../../store/Reducers/loginReducer';
-import { initSelector, initialize, itemsSelector, updateInit } from '../../store/Reducers/CartReducer';
+import { initSelector, initialize, itemsSelector, searchSelector, updateInit } from '../../store/Reducers/CartReducer';
 
 const Home = () => {
 
   const products = useSelector(itemsSelector);
   const initizalized = useSelector(initSelector);
+  const searchInput = useSelector(searchSelector);
   const dispatch = useDispatch();
   const logged = useSelector(loginSelector);
   const [visible, setVisible] = useState(false);
+  const filteredProducts = products.filter((product) => {
+    if(searchInput === '')
+      return product;
+
+    if(product.title.toLowerCase().startsWith(searchInput))
+      return product;
+  })
   
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -52,7 +60,7 @@ const Home = () => {
       <div className="main-home-content">
       <div className="row">
          {
-          products.map((product,i)=>(
+          filteredProducts.map((product,i)=>(
             <div className="col-md-3 col-sm-12">
               <Product product={product} index={i}/>
             </div>

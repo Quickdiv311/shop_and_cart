@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Header.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { itemsSelector } from '../../../store/Reducers/CartReducer';
+import { itemsSelector, updateSearch } from '../../../store/Reducers/CartReducer';
 import { loginSelector, update } from '../../../store/Reducers/loginReducer';
 
 const Header = () => {
@@ -39,10 +39,14 @@ const Header = () => {
         </div>
 
         <div className={styles.rightBar}>
+
+        <input type="text" onChange={(e) => dispatch(updateSearch(e.target.value))}  placeholder="Search.."/>
+
             <span className={styles.cartContainer} onClick={handleCartClick}>
                 <span className={styles.num}>{cartItems.length}</span>
                 <i class="bi bi-cart" style={{fontSize: "30px"}}></i>
             </span>
+            
             {
                logged &&
               <div className={styles.logged}>
