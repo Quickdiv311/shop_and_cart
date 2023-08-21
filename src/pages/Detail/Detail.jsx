@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './Detail.module.css';
-import { itemsSelector, update, add } from '../../store/Reducers/CartReducer';
+import { itemsSelector, update, add, deleteItem } from '../../store/Reducers/CartReducer';
 import Header from '../../components/shared/Header/Header';
 
 const Detail = () => {
@@ -52,7 +52,12 @@ const Detail = () => {
                     <select className='form-select' style={{width: '80px'}} value={item.quantity} onInput={e => {
                      let obj = {...item};
                      obj.quantity = Number(e.target.value);
-                     dispatch(update(obj))}}>
+                     dispatch(update(obj))
+                     if(obj.added)
+                     {
+                        navigate('/cart');
+                     }
+                     }}>
                         {
                             options.map((i) => (
                                 <option value={i.quantity}>{i}</option>
@@ -61,9 +66,9 @@ const Detail = () => {
                     </select>
                 </span>
                 { item.added ? 
-                <button className="btn btn-primary" onClick={() => {navigate('/cart')}}>update Item</button>
+                 <button className="btn btn-danger" onClick={() => {dispatch(deleteItem(item))}}>Delete Item</button>
                 :
-                <button className="btn btn-primary" onClick={() => {dispatch(add(item));navigate('/cart')}}>Add to Cart</button>
+                <button className="btn btn-primary" onClick={() => {dispatch(add(item))}}>Add to Cart</button>
                 }
             </div>
         </div>
