@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/shared/Header/Header';
 import styles from './SignUp.module.css';
 import React, { useState } from 'react';
 
@@ -21,7 +20,6 @@ function SignUp() {
 
       return(
         <div>
-               <Header/>
           <div className={styles.signUp}>
                <h3>Please Register</h3>
                <hr />

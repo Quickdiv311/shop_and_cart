@@ -30,14 +30,14 @@
 {
     display: flex;
     align-items: center;
-    justify-content: end;
-    width: 19%;
+    width: 20%;
 }
 
 .cartContainer
 {
     position: relative;
     cursor: pointer;
+    right: -30px;
 }
 
 .num
@@ -83,4 +83,36 @@ h5
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.searchContainer
+{
+    border-radius: 999px 999px 999px 999px;
+    position: relative;
+    right: 60px;
+}
+
+.searchContainer input
+{
+    border-radius: 999px 999px 999px 999px;
+    height: 40px;
+    padding-left: 50px;
+    width: 220px;
+}
+
+.searchContainer input:focus
+{
+    outline: none;
+}
+
+.searchIcon
+{
+    background-color: rgb(10, 158, 226);
+    position: absolute;
+    height: 100%;
+    border-radius: 999px 0 0 999px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

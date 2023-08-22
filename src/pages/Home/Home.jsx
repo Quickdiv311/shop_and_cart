@@ -1,11 +1,10 @@
 import React, {useEffect, useState } from 'react';
 import './Home.css';
-import Header from '../../components/shared/Header/Header';
 import Product from '../../components/Home/Product/Product';
 import SignIn from '../SignIn/SignIn';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginSelector } from '../../store/Reducers/loginReducer';
-import { initSelector, initialize, itemsSelector, searchSelector, updateInit } from '../../store/Reducers/CartReducer';
+import { initSelector, initialize, itemsSelector, searchSelector, updateInit, updateSearch } from '../../store/Reducers/CartReducer';
 
 const Home = () => {
 
@@ -15,7 +14,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const logged = useSelector(loginSelector);
   const [visible, setVisible] = useState(false);
-  const filteredProducts = products.filter((product) => {
+  let filteredProducts = products;
+  filteredProducts = products.filter((product) => {
     if(searchInput === '')
       return product;
 
@@ -56,7 +56,6 @@ const Home = () => {
   return (
     <div className={handleLogged(logged)}>
       {!logged && visible && <SignIn/>}
-      <Header/>
       <div className="main-home-content">
       <div className="row">
          {

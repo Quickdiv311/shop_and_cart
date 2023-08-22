@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Cart.module.css';
 import CartItem from '../../components/Cart/CartItem/CartItem';
-import Header from '../../components/shared/Header/Header';
-import AppContext from '../../context';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {itemsSelector } from '../../store/Reducers/CartReducer';
@@ -25,7 +23,6 @@ const Cart = () => {
 
   return (
     <div className={styles.main}>
-      <Header/>
         <div className="list">
         {
             cartItems.map((product) => (

@@ -6,18 +6,21 @@ import Cart from './pages/Cart/Cart';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 import Detail from './pages/Detail/Detail';
+import Parent from './pages/Parent/Parent';
 
 function App() {
  
   return (
     <Provider store={store}>
       <BrowserRouter>
-    <Routes>
+       <Parent>
+       <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/:itemId' element={<Detail/>}/>
       <Route path='/signup' element={<SignUp/>}/>
       <Route path='/cart' element={<Cart/>}/>
-    </Routes>
+      </Routes>
+       </Parent>
       </BrowserRouter>
       </Provider>
   );

@@ -39,8 +39,11 @@ const Header = () => {
         </div>
 
         <div className={styles.rightBar}>
-
+        
+        <span className={styles.searchContainer}>
+        <span className={styles.searchIcon}><i class="bi bi-search"></i></span>
         <input type="text" onChange={(e) => dispatch(updateSearch(e.target.value))}  placeholder="Search.."/>
+        </span>
 
             <span className={styles.cartContainer} onClick={handleCartClick}>
                 <span className={styles.num}>{cartItems.length}</span>

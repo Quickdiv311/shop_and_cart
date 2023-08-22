@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './Detail.module.css';
 import { itemsSelector, update, add, deleteItem } from '../../store/Reducers/CartReducer';
-import Header from '../../components/shared/Header/Header';
 
 const Detail = () => {
   
@@ -23,7 +22,6 @@ const Detail = () => {
 
   return (
    <div className={styles.page}>
-    <Header/>
      <div className={styles.container}>
         <div className={styles.left}>
             <img src={item.image} alt={item.title} />
@@ -49,6 +47,7 @@ const Detail = () => {
             <div className={styles.add}>
                 <span className={styles.quantity}>
                     <h5 style={{marginRight: '10px'}}>Quantity:</h5>
+
                     <select className='form-select' style={{width: '80px'}} value={item.quantity} onInput={e => {
                      let obj = {...item};
                      obj.quantity = Number(e.target.value);
@@ -60,6 +59,7 @@ const Detail = () => {
                             ))
                         }
                     </select>
+                    
                 </span>
                 { item.added ? 
                  <div>
