@@ -31,7 +31,7 @@ const Header = () => {
   function handleSearch(e)
   {
     window.scrollTo(0,0);
-    dispatch(updateSearch(e.target.value))
+    dispatch(updateSearch(e.target.value.toLowerCase()))
   }
 
   return (

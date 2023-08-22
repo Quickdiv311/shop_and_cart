@@ -10,7 +10,7 @@ const CartItem = ({item}) => {
   return (
     <div className={styles.container}>
 
-    <div className={styles.container1}>
+    <div className={styles.container1} onClick={() => navigate('/'+item.id)}>
     <div className={styles.subImage}>
          <img src={item.image}></img>
     </div>
