@@ -28,6 +28,12 @@ const Header = () => {
       navigate('/');
   }
 
+  function handleSearch(e)
+  {
+    window.scrollTo(0,0);
+    dispatch(updateSearch(e.target.value))
+  }
+
   return (
     <div className={styles.header}>
 
@@ -42,7 +48,7 @@ const Header = () => {
         
         <span className={styles.searchContainer}>
         <span className={styles.searchIcon}><i class="bi bi-search"></i></span>
-        <input type="text" onChange={(e) => dispatch(updateSearch(e.target.value))}  placeholder="Search.."/>
+        <input type="text" onChange={(e) => {handleSearch(e)}}  placeholder="Search.."/>
         </span>
 
             <span className={styles.cartContainer} onClick={handleCartClick}>
