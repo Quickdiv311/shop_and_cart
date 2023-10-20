@@ -60,7 +60,7 @@ const Home = () => {
       <div className="row">
          {
           filteredProducts.map((product,i)=>(
-            <div className="col-md-3 col-sm-12">
+            <div className="col-lg-3 col-md-6 col-sm-12 item">
               <Product product={product} index={i}/>
             </div>
           ))

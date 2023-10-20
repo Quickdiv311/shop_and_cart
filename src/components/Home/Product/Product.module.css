@@ -2,14 +2,14 @@
 {
     margin-bottom: 40px;
     padding-top: 20px;
-    width: 300px;
+    width: 270px;
     text-align: center;
     background-color: white;
 }
 
-.card:first-child
+.card:last-child
 {
-    margin-left: 120px;
+    margin-right: 0px;
 }
 
 .cardImage
@@ -32,5 +32,6 @@
     color: white;
     padding-top: 20px;
     padding-bottom: 20px;
+    zoom: 90%;
 }
 

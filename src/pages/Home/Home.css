@@ -1,7 +1,6 @@
 .main-home-content
 {
-    margin: 0 40px;
-    padding-top: 40px;
+    padding-top: 100px;
 }
 
 .main-home
@@ -9,10 +8,18 @@
     background-color: #4FC3F7;
     min-height:100vw;
     padding-bottom: 0;
+    width: 100vw;
+    overflow: hidden;
 }
 
 .unlogged-home{
     position: fixed;
     overflow: hidden;
     width: 100vw;
+}
+
+.item
+{
+    display: flex;
+    justify-content: center;
 }
