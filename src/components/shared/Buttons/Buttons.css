@@ -1,0 +1,40 @@
+.quantity
+{
+     border: 1px solid gray;
+     display: flex;
+     height: fit-content;
+     margin: auto;
+     border-radius: 10px;
+     width: 115px;
+}
+
+.homeQuantity
+{
+     border: 1px solid gray;
+     display: flex;
+     height: fit-content;
+     margin: auto;
+     border-radius: 10px;
+     width: 116px;
+}
+
+button:focus{
+     outline: none;
+}
+
+
+@media screen and (max-width: 768px) {
+     .quantity
+     {
+          zoom: 80%;
+     }
+
+     .homeQuantity
+     {
+          width: 100px;
+     }
+
+     .homeQuantity button{
+          height: 40px;
+     }
+}

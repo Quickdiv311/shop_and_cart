@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Header.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +12,7 @@ const Header = () => {
   const cartItems = items.filter(i => i.added === true);
   const logged = useSelector(loginSelector);
   const dispatch = useDispatch();
+  const [hide, setHide] = useState(true);
 
   function handleCartClick()
   {
@@ -33,6 +34,7 @@ const Header = () => {
     window.scrollTo(0,0);
     dispatch(updateSearch(e.target.value.toLowerCase()))
   }
+
 
   return (
     <div className={styles.header}>
@@ -58,11 +60,13 @@ const Header = () => {
             
             {
                logged &&
-              <div className={styles.logged}>
-               <h6 className={styles.signOut} onClick={handleLogout}>Logout</h6>
+              <div className={styles.logged}>    
                <span className={styles.profileContainer}>
                 <i class="bi bi-person-fill" style={{fontSize: "25px"}}></i>
                </span>
+               <div className={styles.hide}>
+               <h6 className={styles.signOut} onClick={handleLogout}>Logout</h6>
+               </div>
               </div>
             }
               </div>

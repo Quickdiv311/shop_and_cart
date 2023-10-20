@@ -9,6 +9,7 @@ const Product = ({product}) => {
 
   let dispatch = useDispatch();
   let navigate = useNavigate();
+  let home = true;
   let stars = new Array(Math.floor(product.rating.rate)).fill(1);
   let half = product.rating.rate%1;
   half = half >=0.5 ? 0.5 : 0;  
@@ -44,7 +45,7 @@ const Product = ({product}) => {
      </p>
     {
        product.added &&
-       <Buttons item={product}/>}
+       <Buttons item={product} home={home}/>}
     
       {!product.added && <button href="#" className="btn btn-primary" onClick={handleAddtoCart}><b>Add to Cart</b></button>}
      </div>

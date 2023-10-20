@@ -15,13 +15,13 @@ const CartItem = ({item}) => {
          <img src={item.image}></img>
     </div>
     <div className={styles.subTitle}>
-        <h4>{item.title}</h4>
+        <h4>{item.title.length > 20 ? item.title.slice(0,20) + "..." : item.title}</h4>
     </div>
     </div>
 
     <div className={styles.container2}>
     <div className={styles.subPrice}>
-         <h4>&#8377; {item.totalPrice}</h4>
+         <h4>&#8377;{item.totalPrice}</h4>
     </div>
 
     <Buttons item={item}/>

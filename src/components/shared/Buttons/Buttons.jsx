@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Buttons.module.css';
+import './Buttons.css';
 import { useDispatch } from 'react-redux';
 import { deleteItem, update } from '../../../store/Reducers/CartReducer';
 
-const Buttons = ({item}) => {
+const Buttons = ({item,home}) => {
 
     const dispatch = useDispatch();
  
@@ -20,11 +20,20 @@ const Buttons = ({item}) => {
        dispatch(deleteItem(item));
     }
 
+  function handleButton(value)
+  {
+    if(!value)
+    {
+       return "quantity";
+    }
+    return "homeQuantity";
+  }
+
   return (
-    <div className={styles.quantity}>
+    <div className={handleButton(home)}>
      {
         item.quantity >1 ? 
-      <button className="btn btn-minus" style={{borderRadius: '10px 0 0 10px', width: '40px'}}
+      <button className="btn btn-minus" style={{borderRadius: '10px 0 0 10px', width: '43px'}}
        onClick={() => handleChange(item.quantity-1)}><span style={{color: 'white'}}>-</span></button>
       :
       <button className="btn btn-danger" style={{borderRadius: '10px 0 0 10px'}} onClick={() => deleteCartItem()}>
