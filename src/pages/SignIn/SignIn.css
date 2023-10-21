@@ -67,7 +67,7 @@
 
 .email-btn
 {
-    background-color:black;color: white; height: 44px
+    background-color:black;color: white; height: 44px;
 }
 
 .signup-link-text
@@ -81,3 +81,10 @@
 {
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 768px) {
+    .sign-in-container{
+        zoom: 90%;
+    }
+}
+

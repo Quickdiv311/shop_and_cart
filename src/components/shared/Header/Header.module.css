@@ -151,6 +151,7 @@ h5
     .searchContainer input{
         height: 25px;
         width: 120px;
+        padding-left: 40px;
     }
 
     .searchIcon{
@@ -176,7 +177,7 @@ h5
 
     .leftBar{
         position: relative;
-        left: -10px;
+        left: -25px;
     }
 
     .hide
@@ -191,9 +192,4 @@ h5
     border-radius: 10px;
     display: none;
 }
-
-  .leftBar{
-    position: relative;
-    left: -15px;
-  }
 }
