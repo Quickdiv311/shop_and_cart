@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import styles from './Detail.module.css';
+import './Detail.css';
 import { itemsSelector, update, add, deleteItem } from '../../store/Reducers/CartReducer';
 
 const Detail = () => {
@@ -21,15 +21,15 @@ const Detail = () => {
   }
 
   return (
-   <div className={styles.page}>
-     <div className={styles.container}>
-        <div className={styles.left}>
+   <div className="detail-page">
+     <div className="detail-container">
+        <div className="detail-left">
             <img src={item.image} alt={item.title} />
         </div>
-        <div className={styles.right}>
+        <div className="detail-right">
             <h1>{item.title}</h1>
             <p>{item.description}</p>
-            <div className={styles.stars}>
+            <div className="detail-stars">
             <span>
             {
                 stars.map(i => (
@@ -44,8 +44,8 @@ const Detail = () => {
             </span>
             </div>
             <h3>Price: &#8377;{item.price}</h3>
-            <div className={styles.add}>
-                <span className={styles.quantity}>
+            <div className="detail-add">
+                <span className="detail-quantity">
                     <h5 style={{marginRight: '10px'}}>Quantity:</h5>
 
                     <select className='form-select' style={{width: '80px'}} value={item.quantity} onInput={e => {
@@ -62,9 +62,9 @@ const Detail = () => {
                     
                 </span>
                 { item.added ? 
-                 <div>
-                    <button className="btn btn-danger" onClick={() => {dispatch(deleteItem(item))}} style={{marginRight: '20px'}}><b>Delete Item</b></button>
-                    <button className="btn btn-warning" onClick={() => {navigate('/cart')}}><b>Go To Cart</b></button>
+                 <div className="detail-button-group">
+                    <button className="btn btn-danger detail-delete" onClick={() => {dispatch(deleteItem(item))}} style={{marginRight: '20px'}}><b>Delete Item</b></button>
+                    <button className="btn btn-warning detail-cart" onClick={() => {navigate('/cart')}}><b>Go to Cart</b></button>
                  </div>
                 :
                 <button className="btn btn-primary" onClick={() => {dispatch(add(item))}}><b>Add to Cart</b></button>
