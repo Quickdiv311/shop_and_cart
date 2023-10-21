@@ -141,7 +141,7 @@ h5
 
 @media screen and (max-width: 768px) {
     .appName{
-        font-size: x-small;
+        font-size: smaller;
         margin-left: 10px;
     }
 
@@ -149,13 +149,17 @@ h5
         position: fixed;
         right: 200px;
         top: 20px;
-        margin-right: 0px;;
+        margin-right: 0px;
+        border: none;
+        outline: none;
     }
 
     .searchContainer input{
         height: 25px;
         width: 120px;
         padding-left: 40px;
+        border: none;
+        outline: none;
     }
 
     .searchIcon{
@@ -166,7 +170,7 @@ h5
     {
         position: fixed;
         right: 75px;
-        top: 15px;
+        top: 17px;
     }
 
     .num
