@@ -163,7 +163,8 @@ h5
     }
 
     .searchIcon{
-        height: 97%;
+        position: absolute;
+        top: 0px;
     }
 
     .cartContainer
