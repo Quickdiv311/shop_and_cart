@@ -137,20 +137,20 @@ h5
 }
 
 @media screen and (max-width: 768px) {
-    h5{
-        font-size: medium;
+    .appName{
+        font-size: x-small;
         margin-left: 10px;
     }
 
     .searchContainer{
         position: relative;
-        right: 170px;
+        right: 150px;
         margin-right: 0px;;
     }
 
     .searchContainer input{
-        height: 35px;
-        width: 150px;
+        height: 25px;
+        width: 120px;
     }
 
     .searchIcon{
@@ -171,7 +171,12 @@ h5
     }
 
     .rightBar{
-        padding-right: 5px;
+        padding-right: 1px;
+    }
+
+    .leftBar{
+        position: relative;
+        left: -10px;
     }
 
     .hide

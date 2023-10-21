@@ -42,7 +42,7 @@ const Header = () => {
       <div className={styles.leftBar}>
             <i class="bi bi-shop-window" className={styles.shop} style={{fontSize: "25px",marginLeft: "10px"}}></i>
         <span className={styles.title}>
-            <h5 onClick={() => navigate('/')}>SHOP&CART</h5>
+            <h5 className={styles.appName} onClick={() => navigate('/')}>SHOP&CART</h5>
         </span>
         </div>
 

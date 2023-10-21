@@ -81,18 +81,28 @@ span
   h4{
     font-size: small;
   }
+
+  .image{
+    position: relative;
+    top: -30px;
+  }
   
   .subTitle{
     width: 180px;
     display: flex;
     height: 3px;
     margin-top: 30px;
+    font-size: x-small;
+    position: relative;
+    left: -10px;
   }
 
   .subPrice
   {
     display: flex;
     padding-top: 13px;
+    position: relative;
+    right: -10px;
   }
 
   .container1{

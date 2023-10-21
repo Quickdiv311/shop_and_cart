@@ -12,10 +12,10 @@ const CartItem = ({item}) => {
 
     <div className={styles.container1} onClick={() => navigate('/'+item.id)}>
     <div className={styles.subImage}>
-         <img src={item.image}></img>
+         <img className={styles.image} src={item.image}></img>
     </div>
     <div className={styles.subTitle}>
-        <h4>{item.title.length > 20 ? item.title.slice(0,20) + "..." : item.title}</h4>
+        <h4>{item.title.length > 15 ? item.title.slice(0,15) + "..." : item.title}</h4>
     </div>
     </div>
 
