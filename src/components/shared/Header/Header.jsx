@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Header.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { itemsSelector, updateSearch } from '../../../store/Reducers/CartReducer';
 import { loginSelector, update } from '../../../store/Reducers/loginReducer';
@@ -13,6 +13,7 @@ const Header = () => {
   const logged = useSelector(loginSelector);
   const dispatch = useDispatch();
   const [hide, setHide] = useState(true);
+  const location = useLocation();
 
   function handleCartClick()
   {
@@ -48,10 +49,12 @@ const Header = () => {
 
         <div className={styles.rightBar}>
         
-        <span className={styles.searchContainer}>
+        {
+          location.pathname.includes('/home') &&
+          <span className={styles.searchContainer}>
         <span className={styles.searchIcon}><i class="bi bi-search"></i></span>
         <input type="text" onChange={(e) => {handleSearch(e)}}  placeholder="Search.."/>
-        </span>
+        </span>}
 
             <span className={styles.cartContainer} onClick={handleCartClick}>
                 <span className={styles.num}>{cartItems.length}</span>

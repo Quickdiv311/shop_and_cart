@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home/Home';
 import SignUp from './pages/SignUp/SignUp';
@@ -15,7 +15,8 @@ function App() {
       <BrowserRouter>
        <Parent>
        <Routes>
-      <Route path='/' element={<Home/>}/>
+       <Route path="/" element={<Navigate to="/home" />} />
+      <Route path='/home' element={<Home/>}/>
       <Route path='/:itemId' element={<Detail/>}/>
       <Route path='/signup' element={<SignUp/>}/>
       <Route path='/cart' element={<Cart/>}/>
