@@ -120,6 +120,7 @@ h5
     align-items: center;
     justify-content: center;
     top: 1px;
+    height: 96%;
 }
 
 .hide
@@ -165,6 +166,7 @@ h5
     .searchIcon{
         position: absolute;
         top: 0px;
+        height: 98%;
     }
 
     .cartContainer

@@ -50,16 +50,17 @@ const Header = () => {
         <div className={styles.rightBar}>
         
         {
-          location.pathname.includes('/home') &&
+          location.pathname.includes('/home') && logged &&
           <span className={styles.searchContainer}>
         <span className={styles.searchIcon}><i class="bi bi-search"></i></span>
         <input type="text" onChange={(e) => {handleSearch(e)}}  placeholder="Search.."/>
         </span>}
 
-            <span className={styles.cartContainer} onClick={handleCartClick}>
+        {    logged && 
+          <span className={styles.cartContainer} onClick={handleCartClick}>
                 <span className={styles.num}>{cartItems.length}</span>
                 <i class="bi bi-cart" style={{fontSize: "30px"}}></i>
-            </span>
+            </span>}
             
             {
                logged &&
