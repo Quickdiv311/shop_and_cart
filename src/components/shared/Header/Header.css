@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+    .bi-search{
+        font-size: 15px;
+    }
+
+    .bi-cart{
+        font-size: 20px !important;
+    }
+
+    .bi-person-fill{
+        font-size: 15px !important;  
+    }
+
+    .bi-shop-window{
+        font-size: 18px !important;
+    }
+}

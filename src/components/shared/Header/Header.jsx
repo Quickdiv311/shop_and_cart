@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Header.module.css';
+import './Header.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { itemsSelector, updateSearch } from '../../../store/Reducers/CartReducer';

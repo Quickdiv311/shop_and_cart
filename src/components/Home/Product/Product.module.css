@@ -5,6 +5,7 @@
     width: 270px;
     text-align: center;
     background-color: white;
+    cursor: pointer;
 }
 
 .card:last-child
@@ -31,7 +32,16 @@
     background-color: black;
     color: white;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 60px;
     zoom: 90%;
+}
+
+.buttons
+{
+    position: relative;
+    z-index: 0;
+    top: -100px;
+    width: fit-content;
+    margin: 0 auto;
 }
 

@@ -148,7 +148,7 @@ h5
 
     .searchContainer{
         position: fixed;
-        right: 200px;
+        right: 190px;
         top: 20px;
         margin-right: 0px;
         border: none;
@@ -158,21 +158,22 @@ h5
     .searchContainer input{
         height: 25px;
         width: 120px;
-        padding-left: 40px;
+        padding-left: 45px;
         border: none;
         outline: none;
+        font-size: small;
     }
 
     .searchIcon{
         position: absolute;
         top: 0px;
-        height: 98%;
+        height: 100%;
     }
 
     .cartContainer
     {
         position: fixed;
-        right: 75px;
+        right: 65px;
         top: 17px;
     }
 
@@ -203,5 +204,9 @@ h5
     color: black;
     border-radius: 10px;
     display: none;
+}
+
+.profileContainer{
+    width: 29px;
 }
 }

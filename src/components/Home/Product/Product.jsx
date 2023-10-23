@@ -22,9 +22,10 @@ const Product = ({product}) => {
 
 
   return (
-<div className={styles.card}>
+  <div className={styles.main}>
+<div className={styles.card} onClick={() => navigate('/'+product.id)}>
      <div className={styles.container}>
-     <img className={styles.cardImage} src={product.image} alt="Card image cap" onClick={() => navigate('/'+product.id)}/>
+     <img className={styles.cardImage} src={product.image} alt="Card image cap"/>
      </div>
      <div className={styles.cardBody}>
      <h5 className={styles.cardTitle}>{product.title.length<20?product.title:product.title.slice(0,20)+"..."}</h5>
@@ -43,12 +44,13 @@ const Product = ({product}) => {
           }
       </span>
      </p>
-    {
-       product.added &&
-       <Buttons item={product} home={home}/>}
     
-      {!product.added && <button href="#" className="btn btn-primary" onClick={handleAddtoCart}><b>Add to Cart</b></button>}
      </div>
+</div>
+<div className={styles.buttons}>
+{product.added && <Buttons item={product} home={home}/>} 
+{!product.added && <button href="#" className="btn btn-primary" onClick={handleAddtoCart}><b>Add to Cart</b></button>}
+</div>
 </div>
   );
 }

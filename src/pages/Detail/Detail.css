@@ -73,9 +73,6 @@
        font-size: large;
     }
 
-    i{
-        font-size: 20px !important;
-    }
 
     .detail-add
     {
@@ -120,5 +117,9 @@
     .detail-cart{
          position: relative;
          right: 10px;
+    }
+
+    .bi-star-fill, .bi-star-half{
+        font-size: 20px !important;
     }
 }
