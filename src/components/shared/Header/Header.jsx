@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { itemsSelector, updateSearch } from '../../../store/Reducers/CartReducer';
 import { loginSelector, update } from '../../../store/Reducers/loginReducer';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../../firebase'; 
 
 const Header = () => {
 
@@ -27,6 +29,9 @@ const Header = () => {
 
   function handleLogout()
   {
+    signOut(auth)
+    .then(res => console.log(res))
+    
       dispatch(update(false));
       navigate('/');
   }

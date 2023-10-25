@@ -18,7 +18,6 @@ function App() {
        <Route path="/" element={<Navigate to="/home" />} />
       <Route path='/home' element={<Home/>}/>
       <Route path='/:itemId' element={<Detail/>}/>
-      <Route path='/signup' element={<SignUp/>}/>
       <Route path='/cart' element={<Cart/>}/>
       </Routes>
        </Parent>

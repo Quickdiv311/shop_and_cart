@@ -1,137 +1,70 @@
-import { useNavigate } from 'react-router-dom';
-import styles from './SignUp.module.css';
-import React, { useState } from 'react';
 
+import { useDispatch } from 'react-redux';
+import './SignUp.css';
+import { update, updateSign } from '../../store/Reducers/loginReducer';
+import {auth} from '../../firebase';
+import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 
-function SignUp() {
-    
-     const [user, setUser] = useState({});
-     const navigate = useNavigate();
+function SignUp(){
+   
+    const dispatch = useDispatch();
+    const provider = new GoogleAuthProvider();
 
-     function handleSubmit(e)
-     {
-      console.log(user);
-     }
+    function handleSignIn()
+    {
+       dispatch(update(true));
+    }
 
-     function handleSignInClick()
-     {
-      navigate('/signin');
-     }
+    function handleGoogle()
+    {
+    signInWithPopup(auth,provider)
+   .then((result) => {
+     dispatch(update(result.user.emailVerified));
+     console.log(result);
+   })
+   .catch((error) => {
+    console.log(error);
+   })
+    }
 
-      return(
-        <div>
-          <div className={styles.signUp}>
-               <h3>Please Register</h3>
-               <hr />
+    return(
+        <div className="sign-up-wrapper">
+            <div className="sign-up-container">
+                <h3 style={{color: 'white'}}>Please Login First !!!</h3>
+                <hr style={{color: 'white'}}/>
+                <form action="">
+                   
+                <input type="text" className="form-control mb-3" placeholder="Display Name"/>
+                <input type="email" className="form-control mb-3" placeholder="User Email"/>
+                
+                <input type="password" className="form-control mb-3" placeholder="Password"/>
+                <input type="password" className="form-control mb-3" placeholder="ConfirmPassword"/>
 
-               <form action="" onSubmit={handleSubmit}>
-                <div className="row">
-                  <div className="mb-3 col-12 col-md-6">
-                      <input onInput={(e) => {
-                        if(!user.name) user.name = {};
-                        user.name.firstName = e.target.value;
-                        setUser(user);
-                      }} 
-                  type="text" name="firstName" className="form-control" placeholder='First Name' />
+                <div className="btn-container">
+                <button className="btn btn-success sign-button" onClick={handleSignIn}>Sign Up</button>
+                </div>
+
+                <div className="signup-link">
+                    <span className="signup-link-text">Already have an account? </span>
+                    <a onClick={() => dispatch(updateSign(true))} style={{textDecoration: 'none', fontWeight: 'bolder',cursor: 'pointer'}}>SignIn</a>
+                </div>
+
+                </form>
+
+                <hr style={{color: 'white'}}/>
+                <div className="signin-btn-pair">
+                <button className="btn btn-primary facebook-btn">
+              <img src="https://i.pinimg.com/564x/d2/17/4b/d2174bdef984e49aafabeb437744ca7a.jpg" className=" facebook-img"/>
+              Sign In With Facebook</button>
+  
+             
+              <button className="btn google-btn" onClick={handleGoogle}>
+                  <img src=" https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" className=" google-img"/>
+                  <b>Sign In With Google</b></button>
                   </div>
-
-                  <div className="mb-3 col-12 col-md-6">
-                      <input type="text" onInput={(e) => {
-                        if(!user.name) user.name = {};
-                        user.name.lastName = e.target.value;
-                        setUser(user);
-                      }} 
-                   name="lastName" className="form-control" placeholder='LastName' />
-                  </div>
-                  </div>
-                  
-                  <div className="mb-3">
-                      <label htmlFor="" className="form-label">UserName</label>
-                      <input 
-                      onInput={(e) => {
-                        user.username = e.target.value;
-                        setUser(user);
-                      }}
-                      type="text" name="userName" className="form-control" />
-                  </div>
-
-                  <div className="mb-3">
-                      <label htmlFor="" className="form-label">Email</label>
-                      <input onInput={e => {
-                        user.email = e.target.value;
-                        setUser(user);
-                      }} type="email" name="email" className="form-control" />
-                  </div>
-
-                  <div className="mb-3">
-                      <label htmlFor="" className="form-label">Password</label>
-                      <input 
-                      onInput={e => {
-                        user.password = e.target.value;
-                        setUser(user);
-                      }}
-                      type="password" name="password" className="form-control" />
-                  </div>
-
-                  <div className="mb-3">
-                      <label htmlFor="" className="form-label">Phone</label>
-                      <input onInput={e => {
-                        user.phone = e.target.value;
-                        setUser(user);
-                      }} type="number" name="phone" className="form-control" />
-                  </div>
-
-
-                  <h4 style={{textAlign: 'left'}}>Address</h4>
-                  <br />
-                  <div className="row">
-                  <div className="mb-3 col-12 col-lg-6">
-                      <input onInput={e => {
-                        if(!user.address) user.address = {};
-                        user.address.number = e.target.value;
-                        setUser(user);
-                      }} type="number" name="number" className="form-control" placeholder='Flat no'/>
-                  </div>
-
-                  <div className="mb-3 col-12 col-lg-6">
-                      <input onInput={e => {
-                        if(!user.address) user.address = {};
-                        user.address.street = e.target.value;
-                        setUser(user);
-                      }} type="text" name="street" className="form-control" placeholder='Street'/>
-                  </div>
-                  </div>
-
-                  <div className="row">
-                  <div className="mb-3 col-12 col-md-6">
-                      <input onInput={e => {
-                        if(!user.address) user.address = {};
-                        user.address.city = e.target.value;
-                        setUser(user);
-                      }} type="text" name="city" className="form-control" placeholder='City'/>
-                  </div>
-
-                  <div className="mb-3 col-6">
-                      <input onInput={e => {
-                        if(!user.address) user.address = {};
-                        user.address.zipCode = e.target.value;
-                        setUser(user);
-                      }} type="text" name="zipCode" className="form-control" placeholder='Zip code'/>
-                  </div>
-                  </div>
-
-                  <button type="submit" className="float-end btn btn-success">Register</button>
-                  <br />
-                  <br />
-                  <hr />
-                 
-               </form>
-               <p>Already a User?</p>
-                  <button className="btn btn-danger" onClick={handleSignInClick}>Sign IN</button>
-          </div>
-          </div>
-      );
+            </div>
+        </div>
+    );
 }
-
 
 export default SignUp;

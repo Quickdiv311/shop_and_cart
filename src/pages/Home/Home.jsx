@@ -3,11 +3,13 @@ import './Home.css';
 import Product from '../../components/Home/Product/Product';
 import SignIn from '../SignIn/SignIn';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginSelector } from '../../store/Reducers/loginReducer';
+import { loginSelector, signedSelector } from '../../store/Reducers/loginReducer';
 import { initSelector, initialize, itemsSelector, searchSelector, updateInit, updateSearch } from '../../store/Reducers/CartReducer';
+import SignUp from '../SignUp/SignUp';
 
 const Home = () => {
 
+  const sign = useSelector(signedSelector);
   const products = useSelector(itemsSelector);
   const initizalized = useSelector(initSelector);
   const searchInput = useSelector(searchSelector);
@@ -55,7 +57,8 @@ const Home = () => {
 
   return (
     <div className={handleLogged(logged)}>
-      {!logged && visible && <SignIn/>}
+      {!logged && visible && !sign && <SignUp/>}
+      {!logged && visible && sign && <SignIn/>}
       <div className="main-home-content">
       <div className="row">
          {
