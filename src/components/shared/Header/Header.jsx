@@ -30,10 +30,12 @@ const Header = () => {
   function handleLogout()
   {
     signOut(auth)
-    .then(res => console.log(res))
-    
-      dispatch(update(false));
-      navigate('/');
+    .then(res => {
+      dispatch(update(!!auth.currentUser));
+      console.log(res)})
+    .catch(e => {
+      console.log(e);
+    }) 
   }
 
   function handleSearch(e)

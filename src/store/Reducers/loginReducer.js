@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { auth } from "../../firebase";
 
 const loginSlice = createSlice({
     name: "login",
     initialState: {
-        logged: false,
+        logged: !!auth.currentUser,
         signed: true,
-        users: []
+        users: [],
+        displayName: ""
     },
     reducers: {
         update: (state, action) => {
@@ -13,11 +15,16 @@ const loginSlice = createSlice({
         },
         updateSign: (state,action) => {
             state.signed = action.payload;
+        },
+        updateName: (state,action) => {
+            state.displayName = action.payload;
         }
     }
 })
 
 export const loginReducer = loginSlice.reducer;
-export const {update,updateSign} = loginSlice.actions;
+export const {update,updateSign,updateName} = loginSlice.actions;
 export const loginSelector = (state) => state.loginReducer.logged;
 export const signedSelector = (state) => state.loginReducer.signed;
+export const nameSelector = (state) => state.loginReducer.displayName;
+

@@ -1,25 +1,21 @@
 
 import { useDispatch } from 'react-redux';
 import './SignUp.css';
-import { update, updateSign } from '../../store/Reducers/loginReducer';
+import { update, updateName, updateSign } from '../../store/Reducers/loginReducer';
 import {auth} from '../../firebase';
-import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import {GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword} from 'firebase/auth';
+import {updateProfile} from 'firebase/auth';
 
 function SignUp(){
    
     const dispatch = useDispatch();
     const provider = new GoogleAuthProvider();
 
-    function handleSignIn()
-    {
-       dispatch(update(true));
-    }
-
     function handleGoogle()
     {
     signInWithPopup(auth,provider)
    .then((result) => {
-     dispatch(update(result.user.emailVerified));
+     dispatch(update(!!auth.currentUser));
      console.log(result);
    })
    .catch((error) => {
@@ -27,12 +23,26 @@ function SignUp(){
    })
     }
 
+    function handleSubmit(e){
+      e.preventDefault();
+      const dName = e.target[0].value;
+      const email = e.target[1].value;
+      const password = e.target[2].value;
+      createUserWithEmailAndPassword(auth,email,password)
+      .then(res => {
+      dispatch(update(!!auth.currentUser));
+      updateProfile(auth.currentUser,{displayName: dName});
+        console.log(res);
+         })
+      .catch(e => console.log(e));
+    }
+
     return(
         <div className="sign-up-wrapper">
             <div className="sign-up-container">
-                <h3 style={{color: 'white'}}>Please Login First !!!</h3>
+                <h3 style={{color: 'white'}}>Create an Account !!!</h3>
                 <hr style={{color: 'white'}}/>
-                <form action="">
+                <form onSubmit={(e) => handleSubmit(e)}>
                    
                 <input type="text" className="form-control mb-3" placeholder="Display Name"/>
                 <input type="email" className="form-control mb-3" placeholder="User Email"/>
@@ -41,15 +51,15 @@ function SignUp(){
                 <input type="password" className="form-control mb-3" placeholder="ConfirmPassword"/>
 
                 <div className="btn-container">
-                <button className="btn btn-success sign-button" onClick={handleSignIn}>Sign Up</button>
+                <button type="submit" className="btn btn-success sign-button">Sign Up</button>
                 </div>
 
+                </form>
+                
                 <div className="signup-link">
                     <span className="signup-link-text">Already have an account? </span>
                     <a onClick={() => dispatch(updateSign(true))} style={{textDecoration: 'none', fontWeight: 'bolder',cursor: 'pointer'}}>SignIn</a>
                 </div>
-
-                </form>
 
                 <hr style={{color: 'white'}}/>
                 <div className="signin-btn-pair">

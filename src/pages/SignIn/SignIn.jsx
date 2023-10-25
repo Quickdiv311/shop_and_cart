@@ -1,25 +1,35 @@
 
 import { useDispatch } from 'react-redux';
 import './SignIn.css';
-import { update, updateSign } from '../../store/Reducers/loginReducer';
+import { update, updateName, updateSign } from '../../store/Reducers/loginReducer';
 import {auth} from '../../firebase';
-import {GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
+import {GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup} from 'firebase/auth';
 
 function SignIn(){
    
     const dispatch = useDispatch();
     const provider = new GoogleAuthProvider();
 
-    function handleSignIn()
+    function handleSignIn(e)
     {
-       dispatch(update(true));
+      e.preventDefault();
+      console.log(e);
+      const email = e.target[0].value;
+      const password = e.target[1].value;
+      signInWithEmailAndPassword(auth,email,password)
+      .then(res => {
+        dispatch(update(!!auth.currentUser));
+        console.log(res);
+         })
+      .catch(e => console.log(e));
+
     }
 
     function handleGoogle()
     {
     signInWithPopup(auth,provider)
    .then((result) => {
-     dispatch(update(result.user.emailVerified));
+     dispatch(update(!!auth.currentUser));
      console.log(result);
    })
    .catch((error) => {
@@ -32,7 +42,7 @@ function SignIn(){
             <div className="sign-in-container">
                 <h3 style={{color: 'white'}}>Please Login First !!!</h3>
                 <hr style={{color: 'white'}}/>
-                <form action="">
+                <form onSubmit={(e) => handleSignIn(e)}>
                 
                 
                 <input type="email" className="form-control mb-3" placeholder="User Email"/>
@@ -40,7 +50,7 @@ function SignIn(){
                 <input type="password" className="form-control mb-3" placeholder="Password"/>
 
                 <div className="btn-container">
-                <button className="btn btn-success sign-button" onClick={handleSignIn}>Sign In</button>
+                <button className="btn btn-success sign-button" type='submit'>Sign In</button>
                 </div>
 
                 <div className="signup-link">
