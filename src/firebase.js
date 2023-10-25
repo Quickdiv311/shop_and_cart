@@ -1,27 +1,15 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp} from "firebase/app";
 import {GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAvs7c0vJatCLu73ekE_QaB4h9IIk4haV4",
-  authDomain: "shopncart-ab3bc.firebaseapp.com",
-  projectId: "shopncart-ab3bc",
-  storageBucket: "shopncart-ab3bc.appspot.com",
-  messagingSenderId: "815983388304",
-  appId: "1:815983388304:web:5e7a3dc76fb7a19b181a15"
+  apiKey: "AIzaSyC9FJ0MHtbl6aG4NcgjYWm5QPb3UfmXaIk",
+  authDomain: "shopandcart-96cd9.firebaseapp.com",
+  projectId: "shopandcart-96cd9",
+  storageBucket: "shopandcart-96cd9.appspot.com",
+  messagingSenderId: "413877304645",
+  appId: "1:413877304645:web:fcf61c0cb69807636a922c",
 };
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-// const provider = new GoogleAuthProvider();
-
-// export const signInWithGoogle = () => {
-
-//    signInWithPopup(auth,provider)
-//    .then((result) => {
-//     console.log(result);
-//    })
-//    .catch((error) => {
-//     console.log(error);
-//    })
-// }
