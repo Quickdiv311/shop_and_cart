@@ -5,23 +5,53 @@ import { update, updateName, updateSign } from '../../store/Reducers/loginReduce
 import {auth} from '../../firebase';
 import {GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword} from 'firebase/auth';
 import {updateProfile} from 'firebase/auth';
+import FormInput from '../../components/shared/FormInput/FormInput';
+import { useState } from 'react';
 
 function SignUp(){
    
     const dispatch = useDispatch();
-    const provider = new GoogleAuthProvider();
 
-    function handleGoogle()
-    {
-    signInWithPopup(auth,provider)
-   .then((result) => {
-     dispatch(update(!!auth.currentUser));
-     console.log(result);
+    const [values, setValues] = useState({
+      displayName: "",
+      email: "",
+      password: "",
+      confirmPassword: ""
    })
-   .catch((error) => {
-    console.log(error);
-   })
-    }
+
+   const inputs = [
+           {
+               name: "displayName",
+               type: "text",
+               placeholder: "Display Name",
+               errorMessage: "Please enter a name within 3-16 range",
+               pattern: "^[A-Za-z0-9]{3,16}$",
+               required: true
+           },
+           {
+            name: "email",
+            type: "email",
+            placeholder: "User Email",
+            errorMessage: "Invalid Email",
+            required: true
+           },
+           {
+               name: "password",
+               type: "password",
+               placeholder: "Password",
+               errorMessage: "Enter atleast 8 characters with alteast [1 letter, 1 special character and 1 number]",
+               pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
+               required: true
+           },
+           {
+            name: "confirmPassword",
+            type: "password",
+            placeholder: "Confirm Password",
+            errorMessage: "Passwords don't match",
+            pattern: values.password,
+            required: true
+        },
+   ]
 
     function handleSubmit(e){
       e.preventDefault();
@@ -37,6 +67,10 @@ function SignUp(){
       .catch(e => console.log(e));
     }
 
+    function onChange(e){
+      setValues({...values,[e.target.name]: e.target.value});
+  }
+
     return(
         <div className="sign-up-wrapper">
             <div className="sign-up-container">
@@ -44,11 +78,11 @@ function SignUp(){
                 <hr style={{color: 'white'}}/>
                 <form onSubmit={(e) => handleSubmit(e)}>
                    
-                <input type="text" className="form-control mb-3" placeholder="Display Name"/>
-                <input type="email" className="form-control mb-3" placeholder="User Email"/>
-                
-                <input type="password" className="form-control mb-3" placeholder="Password"/>
-                <input type="password" className="form-control mb-3" placeholder="ConfirmPassword"/>
+                {
+                            inputs.map((input) => (
+                                <FormInput {...input} value={values[input.name]} onChange={onChange}/>
+                            ))
+                }
 
                 <div className="btn-container">
                 <button type="submit" className="btn btn-success sign-button">Sign Up</button>
@@ -61,17 +95,6 @@ function SignUp(){
                     <a onClick={() => dispatch(updateSign(true))} style={{textDecoration: 'none', fontWeight: 'bolder',cursor: 'pointer'}}>SignIn</a>
                 </div>
 
-                <hr style={{color: 'white'}}/>
-                <div className="signin-btn-pair">
-                <button className="btn btn-primary facebook-btn">
-              <img src="https://i.pinimg.com/564x/d2/17/4b/d2174bdef984e49aafabeb437744ca7a.jpg" className=" facebook-img"/>
-              Sign In With Facebook</button>
-  
-             
-              <button className="btn google-btn" onClick={handleGoogle}>
-                  <img src=" https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" className=" google-img"/>
-                  <b>Sign In With Google</b></button>
-                  </div>
             </div>
         </div>
     );
