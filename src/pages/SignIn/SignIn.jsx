@@ -26,7 +26,7 @@ function SignIn(){
                name: "password",
                type: "password",
                placeholder: "Password",
-               errorMessage: "Enter atleast 8 characers with alteast[1 letter, 1special character and 1 number]",
+               errorMessage: "Enter atleast 8 characters with atleast 1 letter, 1 special character and 1 number",
                pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
                required: true
            },
