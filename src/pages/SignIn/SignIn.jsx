@@ -19,14 +19,14 @@ function SignIn(){
             name: "email",
             type: "email",
             placeholder: "User Email",
-            errorMessage: "Invalid Email",
+            errorMessage: "Please enter a valid email id",
             required: true
            },
            {
                name: "password",
                type: "password",
                placeholder: "Password",
-               errorMessage: "Enter atleast 8 characters with atleast 1 letter, 1 special character and 1 number",
+               errorMessage: "Please enter atleast 8 characters with atleast - - - [1 letter, 1 special character and 1 number]",
                pattern: `^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$`,
                required: true
            },
